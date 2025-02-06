@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffcccb; /* Fallback color if image doesn't load */
+  background-image: url("assets/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: "Arial", sans-serif;
+  /* 
+    If you want your page to always fill the viewport height 
+    and center its contents vertically & horizontally, keep these:
+  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+  bottom: 100px;
+
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  border: 10px solid #ff69b4; /* Pink border */
+  border-radius: 10px;
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 20px; /* Rounded images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.roboto-custom {
+  font-family: "Roboto", sans-serif; /* "Roboto" is normally a sans-serif font */
+  font-optical-sizing: auto;
+  font-weight: 700; /* Choose a value from 100 to 900 */
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+
+.caption {
+  position: absolute;
+  border: 10px solid #ff69b4; /* Pink border */
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Roboto", sans-serif; /* Use Roboto directly here */
+  font-optical-sizing: auto;
+  font-weight: 700; /* Choose a value from 100–900 */
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+  color: #ff69b4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Arrows */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.3s ease;
+  border-radius: 50%;
+  background-color: rgba(255, 105, 180, 0.8); /* Pink background */
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(255, 105, 180, 1); /* Brighter pink on hover */
+}

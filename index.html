@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #ffc0cb;
+      background-image: url("assets/flower.png");
+      background-size: cover;       /* Ensures background fills the page */
+      background-position: center;  /* Center the background image */
+      background-repeat: no-repeat;
+    }
+
+    .valentine-container {
+      text-align: center;
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .valentine-container h1 {
+      margin: 0 0 30px 0;
+      color: #e60073;
+      font-size: 2em;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(2);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(5);
+        opacity: 0;
+      }
+    }
+
+    .explode {
+      animation: explode 0.5s forwards;
+    }
+
+    #blueBox {
+      position: absolute;
+      bottom: 20px;
+      left: -120px;
+      width: 400px;
+      height: 200px;
+      background-image: url("assets/van.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 10px;
+      display: none;
+      transform: rotate(0deg) scaleX(-1);
+    }
+
+    @keyframes drive {
+      0% {
+        left: -120px;
+      }
+      100% {
+        left: calc(100% + 20px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="blueBox"></div>
+    <div class="valentine-container">
+      <h1>Will you be my Valentine?</h1>
+      <div class="buttons">
+        <button id="yesButton">YES</button>
+        <button id="noButton">NO</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Audio element WITHOUT autoplay -->
+  <audio id="mySound" src="assets/rizz-sounds.mp3"></audio>
+
+  <script>
+    // Attempt to play sound on page load
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('mySound');
+      // Attempt to play. If blocked, the sound won't start until user clicks or taps somewhere.
+      audio.play().catch(err => {
+        console.warn('Autoplay was blocked:', err);
+      });
+    });
+
+    const noButton = document.getElementById('noButton');
+    const yesButton = document.getElementById('yesButton');
+    const blueBox = document.getElementById('blueBox');
+
+    noButton.addEventListener('click', () => {
+      noButton.classList.add('explode');
+      setTimeout(() => {
+        noButton.remove();
+        alert('Nu uh, not letting you reject me again! 😤');
+      }, 500);
+    });
+
+    yesButton.addEventListener('click', () => {
+      blueBox.style.display = 'block';
+      blueBox.style.animation = 'drive 3s linear forwards';
+
+      blueBox.addEventListener('animationend', () => {
+        // Redirect to aquarium.html after animation completes
+        window.location.href = 'aquarium.html';
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>
+
